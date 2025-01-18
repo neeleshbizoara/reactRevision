@@ -74,3 +74,20 @@
     display: flex;
     gap: 5px;
 }
+
+.menuImage {
+    width: 150px;
+    height: 200px;
+}
+
+.menuContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.link-reset {
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Inherit text color from parent */
+}
