@@ -27,13 +27,11 @@ const RestaurantMenu = () => {
       <h2>{resInfo[0]?.card?.card?.text}</h2>
               <h2>Menu</h2>
               {resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.map(item => console.log(item.card.card.itemCards ? item.card.card.itemCards : ''))}
-      {/* {resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.itemCards?.name} */}
               <ul>
                   
         {resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards.map(
           (card) => {
             const { name, imageId, id, category } = card?.card?.info;
-            // console.log(card?.card?.info);
             return (
               <li key={id}>
                 <div className="menuContainer">
