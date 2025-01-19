@@ -1,0 +1,24 @@
+{
+  "name": "03-episode",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel index.html",
+    "build": "cross-env NODE_ENV=production parcel build index.html",
+    "test": "cross-env NODE_ENV=test parcel index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "parcel": "^2.13.3",
+    "process": "^0.11.10",
+    "svgo": "^3.3.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.11.2"
+  }
+}
