@@ -17,7 +17,8 @@ class About extends Component {
 
         return (<div>
             <h1>About</h1>
-            <User name={"Neelesh (Class Component)"}></User>
+            <User name={"Neelesh ( First Class Component)"}></User>
+            <User name={"Neelesh ( Second Class Component)"}></User>
         </div>)
     }
 }
