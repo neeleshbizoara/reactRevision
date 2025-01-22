@@ -7,7 +7,6 @@ import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
 import Body from "./components/Body";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Test from "./components/Test";
 
 /**
  * Chunking

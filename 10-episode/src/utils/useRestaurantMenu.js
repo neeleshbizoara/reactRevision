@@ -24,7 +24,7 @@ const useRestaurantMenu = (resID) => {
         return () => {
             isSubscribed = false;
         }
-    })
+    }, [])
     return restInfo;
 }
 

@@ -6,16 +6,16 @@ const RestaurantMenu = () => {
   const { resId } = useParams()
   const resInfo = useRestaurantMenu(resId);
 
-  return resInfo.length === 0 ? (
+  return !resInfo || resInfo.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="menu">
-      <h2>{resInfo[0]?.card?.card?.text}</h2>
+      <h2>{resInfo.data.cards[0]?.card?.card?.text}</h2>
               <h2>Menu</h2>
-              {resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.map(item => console.log(item.card.card.itemCards ? item.card.card.itemCards : ''))}
+              {resInfo.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.map(item => console.log(item.card.card.itemCards ? item.card.card.itemCards : ''))}
               <ul>
                   
-        {resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards.map(
+        {resInfo.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards.map(
           (card) => {
             const { name, imageId, id, category } = card?.card?.info;
             return (

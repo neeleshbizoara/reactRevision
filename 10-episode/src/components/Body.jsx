@@ -5,7 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from '../utils/useOnlineStatus';
- import {_Input} from './StyledComponent'
+import { _Input } from './StyledComponent';
+import Button from '@mui/material/Button';
+
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]); // state variable
@@ -75,18 +77,19 @@ const Body = () => {
               Search
             </button>
           </div>
-          <button
+        <Button
+            variant="contained"
             className="filter-btn"
             onClick={() => {
               const filteredList = restaurants.filter(
                 ele => ele.info.avgRating >= 4.5
               );
               console.log(filteredList);
-              setListOfRestaurants(filteredList);
+              setFilteredRestaurants(filteredList);
             }}
           >
             Top Rated Restaurant
-          </button>
+          </Button>
         </div>
         <div className="res-container">
           {filteredRestaurants.map(ele =>
