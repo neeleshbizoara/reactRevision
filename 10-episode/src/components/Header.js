@@ -6,24 +6,31 @@ const Header = () => {
   console.log(useState());
   console.log(process.env.REACT_APP_API_URL, process.env.REACT_APP_ENV);
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img alt="logo" src={logo} className="logoSize" />
+    <div className="flex justify-between bg-slate-300">
+      <div className="w-24">
+        <img alt="logo" src={logo} />
       </div>
-      <div className="nav-items">
-        <ul>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
           <li>
-            <Link to="/" className="link-reset"><div > Home </div></Link>
+            <Link to="/">
+              <div className="px-4"> Home </div>
+            </Link>
           </li>
           <li>
-            <Link to="/about" className="link-reset">About Us</Link>
+            <Link to="/about">
+              <div className="px-4">About Us</div>
+            </Link>
           </li>
           <li>
-            <Link to="contact" className="link-reset">Contact Us</Link>
+            <Link to="contact">
+              <div className="px-4">Contact Us</div>
+            </Link>
           </li>
-          <li>Cart</li>
+          <li>
+            <div className="px-4">Cart</div>
+          </li>
           <button
-            className="login"
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}

@@ -46,7 +46,7 @@ export const _Input = styled.input`
   color: #bfbfbf;
   min-height: 35px;
   display: initial;
-  width: 100%;
+  // width: 100%;
   outline: none;
   font-size: 15px;
   &:focus {

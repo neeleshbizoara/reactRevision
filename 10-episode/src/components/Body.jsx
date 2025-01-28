@@ -4,10 +4,9 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useRef, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import useOnlineStatus from '../utils/useOnlineStatus';
-import { _Input } from './StyledComponent';
-import Button from '@mui/material/Button';
-
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { _Input } from "./StyledComponent";
+import Button from "@mui/material/Button";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]); // state variable
@@ -38,10 +37,13 @@ const Body = () => {
   //   console.log(e.target.value);
   // };
 
-
   if (!onLineStatus) {
-      return <h1>Looks like you are offline. Please check your Internet connection.</h1>
-    }
+    return (
+      <h1>
+        Looks like you are offline. Please check your Internet connection.
+      </h1>
+    );
+  }
 
   const fetchData = async () => {
     const data = await fetch(SWIGGY_API);
@@ -54,30 +56,32 @@ const Body = () => {
 
   return listOfRestaurants.length === 0
     ? <Shimmer />
-    : <div className="body">
-        <div className="filter">
-          <div className="search">
-            <_Input
-              type="text"
-              className="search-box"
-              value={searchText}
-              onChange={e => {
-                setSearchText(e.target.value);
+    : <>
+      <div className="flex m-2">
+        {/* <div className="flex-col"> */}
+        <div className="w-1/2 flex space-x-4">
+          <_Input
+            type="text"
+            value={searchText}
+            onChange={e => {
+              setSearchText(e.target.value);
             }}
-             ref={inputRef} 
-            />
-            <button
-              onClick={() => {
-                const filteredData = listOfRestaurants.filter(ele =>
-                  ele.info.name.toLowerCase().includes(searchText.toLowerCase())
-                );
-                setFilteredRestaurants(filteredData);
-              }}
-            >
-              Search
-            </button>
-          </div>
-        <Button
+            ref={inputRef}
+          />
+          <button
+            className="bg-blue-400 rounded-md w-24 mr-40"
+            onClick={() => {
+              const filteredData = listOfRestaurants.filter(ele =>
+                ele.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRestaurants(filteredData);
+            }}
+          >
+            Search
+          </button>
+        </div>
+        <div className="w-1/2 flex justify-end">
+          <Button
             variant="contained"
             className="filter-btn"
             onClick={() => {
@@ -91,14 +95,20 @@ const Body = () => {
             Top Rated Restaurant
           </Button>
         </div>
-        <div className="res-container">
-          {filteredRestaurants.map(ele =>
-            <Link to={"/restaurant/" + ele.info.id} key={ele.info.id} className="link-reset">
+      </div>
+        <div className="flex flex-wrap justify-center">
+        {filteredRestaurants.map(ele =>
+            (<div className="bg-gray-300 m-6 rounded-md hover:bg-gray-500" key={ele.info.id}>
+            <Link
+              to={"/restaurant/" + ele.info.id}
+            >
               <RestaurantCard restData={ele.info} />
             </Link>
+            </div>)
           )}
         </div>
-      </div>;
+    {/* </div> */}
+      </>;
 };
 
 export default Body;
