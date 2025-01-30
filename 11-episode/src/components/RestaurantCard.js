@@ -13,4 +13,15 @@ const RestaurantCard = (props) => {
 }
 
 
+// Higher Order Function
+export const withPromotedLabel = (RestaurantCard) => {
+    return (props) => {
+        console.log(props.restData.aggregatedDiscountInfoV3)
+        return (<div>
+            <label className="absolute bg-black text-white m-2 p-2 rounded-lg">{props.restData.aggregatedDiscountInfoV3.header} {props.restData.aggregatedDiscountInfoV3.subHeader}</label>
+            <RestaurantCard {...props}/>
+        </div>)
+    }
+}
+
 export default RestaurantCard;

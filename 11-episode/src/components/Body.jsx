@@ -1,6 +1,6 @@
 import { SWIGGY_API } from "../utils/constants";
 import restaurants from "../utils/data";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
 import { useEffect, useRef, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -14,6 +14,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const onLineStatus = useOnlineStatus();
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
 
   useEffect(() => {
     if (onLineStatus) {
@@ -101,8 +103,10 @@ const Body = () => {
             (<div className="bg-gray-300 m-6 rounded-md hover:bg-gray-500" key={ele.info.id}>
             <Link
               to={"/restaurant/" + ele.info.id}
-            >
+          >
+            {ele.info.aggregatedDiscountInfoV2 ?
               <RestaurantCard restData={ele.info} />
+            : <RestaurantCardPromoted restData={ele.info}/>}
             </Link>
             </div>)
           )}
