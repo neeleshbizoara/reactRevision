@@ -1,6 +1,7 @@
 import { Component } from "react";
 import User from "./UserClass";
 import { Title, Input, _Input } from "./StyledComponent";
+import ContextAPI from "./contextAPI/ContextAPI";
 
 
 class About extends Component {
@@ -30,6 +31,7 @@ class About extends Component {
             <User name={"Neelesh ( First Class Component)"}></User>
             <User name={"Neelesh ( Second Class Component)"}></User>
             {/* <Test></Test> */}
+            <ContextAPI/>
         </div>)
     }
 }

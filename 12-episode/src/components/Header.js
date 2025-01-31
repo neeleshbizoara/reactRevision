@@ -1,10 +1,16 @@
 import { useState } from "react";
 import logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   console.log(useState());
   console.log(process.env.REACT_APP_API_URL, process.env.REACT_APP_ENV);
+
+  //SUbscribing to the store using a Selector 
+  const cartItems = useSelector((store) => store.cart.items);
+
   return (
     <div className="flex justify-between bg-slate-300">
       <div className="w-24">
@@ -28,7 +34,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <div className="px-4">Cart</div>
+            <div className="px-4 font-bold">Cart ({cartItems.length} items)</div>
           </li>
           <button
             onClick={() => {
